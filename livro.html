@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Arquitetura da não-vontade — livro em construção sobre recusa, silêncio e a experiência demissexual. @naoeserexigente">
+<meta name="author" content="@naoeserexigente">
+<meta name="color-scheme" content="dark light">
+<title>Arquitetura da não-vontade · livro em construção</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg-dark: #0a0a0a;
+    --surface-dark: #141414;
+    --paper-dark: #1a1a1a;
+    --border-dark: #2a2a2a;
+    --text-dark: #e8e6e1;
+    --text-muted-dark: #9ca3af;
+    --bg-light: #faf8f5;
+    --surface-light: #ffffff;
+    --paper-light: #ffffff;
+    --border-light: #e2e0dc;
+    --text-light: #1a1a1a;
+    --text-muted-light: #6b7280;
+    --purple: #8b5cf6;
+    --purple-dark: #6d28d9;
+    --amber: #f59e0b;
+    --wine: #b91c1c;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.65;
+    transition: background 0.3s, color 0.2s;
+    scroll-behavior: smooth;
+  }
+  body.dark { background: var(--bg-dark); color: var(--text-dark); }
+  body.light { background: var(--bg-light); color: var(--text-light); }
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  /* header / navegação */
+  .top-bar {
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(12px);
+    z-index: 10;
+    padding: 16px 0;
+    border-bottom: 1px solid;
+  }
+  body.dark .top-bar { background: rgba(10,10,10,0.85); border-color: var(--border-dark); }
+  body.light .top-bar { background: rgba(250,248,245,0.9); border-color: var(--border-light); }
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .nav-links a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--purple); }
+  .book-title {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .status {
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-left: 12px;
+    vertical-align: middle;
+  }
+  /* sumário */
+  .toc {
+    margin: 40px 0 32px;
+    padding: 24px 28px;
+    border-radius: 24px;
+  }
+  body.dark .toc { background: var(--surface-dark); border: 1px solid var(--border-dark); }
+  body.light .toc { background: var(--surface-light); border: 1px solid var(--border-light); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+  .toc h2 { font-family: 'Crimson Pro', serif; font-size: 1.3rem; margin-bottom: 16px; font-weight: 500; }
+  .toc ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .toc li a { text-decoration: none; color: inherit; border-bottom: 1px dotted transparent; transition: border 0.2s; }
+  .toc li a:hover { border-bottom-color: var(--purple); color: var(--purple); }
+  /* capítulos */
+  .chapter {
+    margin: 56px 0;
+    scroll-margin-top: 80px;
+  }
+  .chapter-number {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--purple);
+    margin-bottom: 12px;
+  }
+  .chapter-title {
+    font-family: 'Crimson Pro', serif;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 28px;
+    border-left: 4px solid var(--purple);
+    padding-left: 20px;
+  }
+  .chapter-content {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+  .chapter-content p {
+    margin-bottom: 1.4rem;
+  }
+  .chapter-content blockquote {
+    font-style: italic;
+    border-left: 3px solid var(--purple);
+    padding-left: 24px;
+    margin: 28px 0;
+    opacity: 0.85;
+  }
+  .footnote {
+    font-size: 0.8rem;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px dashed;
+    opacity: 0.7;
+  }
+  body.dark .footnote { border-color: var(--border-dark); }
+  body.light .footnote { border-color: var(--border-light); }
+  .coming-soon {
+    opacity: 0.6;
+    font-style: italic;
+    padding: 32px;
+    text-align: center;
+    background: rgba(139,92,246,0.05);
+    border-radius: 24px;
+  }
+  .theme-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--purple);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+  footer {
+    margin: 80px 0 48px;
+    padding-top: 32px;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.6;
+    border-top: 1px solid;
+  }
+  body.dark footer { border-color: var(--border-dark); }
+  body.light footer { border-color: var(--border-light); }
+  .update-badge {
+    font-size: 0.7rem;
+    background: var(--amber);
+    color: #000;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-left: 12px;
+  }
+  @media (max-width: 680px) {
+    .chapter-title { font-size: 1.6rem; }
+    .chapter-content { font-size: 1rem; }
+  }
+</style>
+</head>
+<body class="dark">
+<button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">🌓</button>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="nav-links">
+      <div>
+        <a href="/">← @naoeserexigente</a>
+        <span class="status">livro em construção</span>
+      </div>
+      <div style="display: flex; gap: 20px;">
+        <a href="#indice">sumário</a>
+        <a href="https://github.com/wagnerpyter/naoeserexigente" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <header style="margin: 48px 0 24px;">
+    <h1 class="book-title">Arquitetura da não-vontade</h1>
+    <p style="font-size: 0.9rem; margin-top: 12px; opacity: 0.7;">@naoeserexigente · 23 de março de 2026 — em curso</p>
+    <p style="margin-top: 20px; font-style: italic;">um livro sobre recusa silenciosa, demissexualidade e a suspensão do desejo esperado</p>
+  </header>
+
+  <!-- Índice / Sumário mutável -->
+  <div class="toc" id="indice">
+    <h2>📖 índice provisório</h2>
+    <ul>
+      <li><a href="#cap1">I. A gramática da vontade</a> <span class="update-badge">rascunho</span></li>
+      <li><a href="#cap2">II. Bartleby, o preferiria não</a> <span class="update-badge">rascunho</span></li>
+      <li><a href="#cap3">III. A porta meio aberta</a> <span class="update-badge">rascunho</span></li>
+      <li><a href="#cap4">IV. Não-vontade como presença</a> <span class="update-badge">em andamento</span></li>
+      <li><a href="#cap5">V. O vazio arquitetônico</a> <span class="update-badge">breve</span></li>
+      <li><a href="#cap6">VI. Ler Bartleby depois dos fóruns ace</a> <span class="update-badge">esboço</span></li>
+    </ul>
+    <p style="margin-top: 20px; font-size: 0.8rem;">✎ texto mutável — atualizações direto no GitHub</p>
+  </div>
+
+  <!-- CAPÍTULO I -->
+  <section class="chapter" id="cap1">
+    <div class="chapter-number">Capítulo I</div>
+    <h2 class="chapter-title">A gramática da vontade</h2>
+    <div class="chapter-content">
+      <p>No mundo organizado segundo a lógica da vontade, cada gesto parece exigir uma declaração: quero, escolho, aceito, rejeito. A vida moderna parte da ideia de que existir é avançar em direção a alguma coisa, ainda que essa coisa mude continuamente de nome — trabalho, amor, sucesso, identidade.</p>
+      <p>Há, porém, personagens cuja força nasce justamente do fato de não entrarem inteiramente nessa gramática. Eles não recusam com violência, porque a violência ainda concede dignidade ao combate. Também não obedecem, porque obedecer já seria aceitar o jogo. Permanecem numa zona intermediária, onde o gesto perde espessura e a decisão se torna quase imperceptível.</p>
+      <p>É aí que começa a arquitetura da não-vontade.</p>
+      <blockquote>"Talvez toda sociedade tema menos os rebeldes do que aqueles que retiram silenciosamente o investimento emocional do mundo."</blockquote>
+      <p>O rebelde ainda acredita que vale a pena disputar a forma das coisas. O sujeito da não-vontade parece suspeitar que até mesmo a disputa já concede importância excessiva ao mecanismo que o cerca. Há nisso algo de escandaloso, porque a civilização foi construída sobre a crença de que desejar é quase uma obrigação cívica: desejar trabalho, desejar amor, desejar reconhecimento, desejar futuro. Quando esse circuito enfraquece, não surge imediatamente a tragédia. Surge antes uma espécie de leveza opaca, difícil de classificar.</p>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO II -->
+  <section class="chapter" id="cap2">
+    <div class="chapter-number">Capítulo II</div>
+    <h2 class="chapter-title">Bartleby, o preferiria não</h2>
+    <div class="chapter-content">
+      <p>Quando alguém diz apenas “preferiria não”, como acontece em Bartleby, the Scrivener, a frase parece fraca à primeira vista, quase educada demais para carregar uma ruptura. Mas sua delicadeza é precisamente sua força. Ela não oferece ao poder aquilo de que o poder necessita: uma oposição clara. O sistema sabe responder ao protesto, à desobediência, ao escândalo. O que o desorienta é a diminuição do impulso.</p>
+      <p>A recusa absoluta ainda pertence à mesma família moral da ordem, porque ambas compartilham a convicção de que algo decisivo está em disputa. A preferência negativa, ao contrário, dissolve o drama sem anulá-lo.</p>
+      <p>Por isso a não-vontade não se confunde com passividade. O passivo desaparece. O sujeito da não-vontade permanece. Continua no espaço, continua visível, continua perturbando apenas por não oferecer a energia esperada. Sua presença se torna um pequeno vazio arquitetônico: tudo continua de pé, mas já não funciona do mesmo modo.</p>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO III -->
+  <section class="chapter" id="cap3">
+    <div class="chapter-number">Capítulo III</div>
+    <h2 class="chapter-title">A porta meio aberta</h2>
+    <div class="chapter-content">
+      <p>Você deixa a porta meio aberta como quem recusa duas coisas ao mesmo tempo: o convite e a recusa definitiva.</p>
+      <p>No começo pensei que fosse distração. Depois percebi que havia método. Uma abertura pequena impede que os outros saibam se devem entrar, chamar, esperar ou ir embora. Obriga cada um a sustentar por alguns segundos a própria incerteza.</p>
+      <p>O prédio inteiro tenta montar você com pedaços soltos: horários, passos, silêncio, respostas curtas no elevador. Como se uma pessoa pudesse ser alcançada pela repetição de detalhes. Mas nada fecha.</p>
+      <p>Seu modo de responder, às vezes apenas com a cabeça, produz um desconforto difícil de explicar. Não porque falte educação. Pelo contrário, existe cuidado, só que um cuidado sem adesão, sem vontade de prolongar o contato.</p>
+      <p>Talvez seja isso que mais perturba: você não oferece matéria suficiente para que os outros organizem uma narrativa. Eles precisam concluir alguma coisa. Dar nome, motivo, desvio, carência. Você permanece antes disso.</p>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO IV (em andamento) -->
+  <section class="chapter" id="cap4">
+    <div class="chapter-number">Capítulo IV</div>
+    <h2 class="chapter-title">Não-vontade como presença</h2>
+    <div class="chapter-content">
+      <p>A não-vontade não é inércia. É um modo de ocupar o mundo sem alimentar o mecanismo que exige escolhas afirmativas a todo instante. O sujeito da não-vontade não some, não foge, não abandona. Ele está ali — mas sem a densidade que permitiria aos outros agarrarem alguma coisa.</p>
+      <p>Em uma época que transforma cada relação em projeto, cada encontro em investimento, a recusa silenciosa se torna uma forma de proteção contra a ansiedade de performar desejo. Não porque o desejo não exista. Existe. Mas sua aparição não obedece ao cronograma esperado.</p>
+      <p>Há uma arquitetura nisso: a construção de um espaço interno onde a vontade alheia não entra, mas também não é enfrentada. Apenas encontra uma porta entreaberta — e a indecisão arquitetônica suspende o impulso do invasor.</p>
+      <div class="footnote">✎ este capítulo está em desenvolvimento. Novos fragmentos serão adicionados.</div>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO V (próximo) -->
+  <section class="chapter" id="cap5">
+    <div class="chapter-number">Capítulo V</div>
+    <h2 class="chapter-title">O vazio arquitetônico</h2>
+    <div class="chapter-content coming-soon">
+      <p>📖 Em breve — sobre como a ausência de resposta afirmativa reorganiza o espaço relacional.</p>
+    </div>
+  </section>
+
+  <!-- CAPÍTULO VI (futuro) -->
+  <section class="chapter" id="cap6">
+    <div class="chapter-number">Capítulo VI</div>
+    <h2 class="chapter-title">Ler Bartleby depois dos fóruns ace</h2>
+    <div class="chapter-content coming-soon">
+      <p>📖 Bartleby voltou a ser lido de outra forma quando comunidades assexuais na internet começaram a reconhecer nele uma experiência de recusa difícil de nomear. AVEN, Reddit, fóruns brasileiros. Este capítulo será sobre leitura retrospectiva, hermenêutica comunitária e a invenção de um vocabulário.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Arquitetura da não-vontade · @naoeserexigente</p>
+    <p style="margin-top: 8px;">texto mutável — acompanhe as atualizações no GitHub<br>última alteração: 04 de abril de 2026</p>
+    <p style="margin-top: 16px; font-size: 0.75rem;">✎ este livro é escrito com assistência de IA e revisão constante da comunidade</p>
+  </footer>
+</main>
+
+<script>
+  // tema claro/escuro
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+  const savedTheme = localStorage.getItem('bookTheme');
+  if (savedTheme === 'light') body.classList.replace('dark', 'light');
+  else if (savedTheme === 'dark') body.classList.replace('light', 'dark');
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches && !savedTheme) body.classList.replace('dark', 'light');
+  
+  themeToggle.addEventListener('click', () => {
+    const isDark = body.classList.contains('dark');
+    if (isDark) {
+      body.classList.replace('dark', 'light');
+      localStorage.setItem('bookTheme', 'light');
+    } else {
+      body.classList.replace('light', 'dark');
+      localStorage.setItem('bookTheme', 'dark');
+    }
+  });
+</script>
+</body>
+</html>
