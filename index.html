@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f5f2ee" media="(prefers-color-scheme: light)">
+<meta name="description" content="demissexual não é ser exigente — comunidade de conscientização e acolhimento para pessoas demissexuais no espectro assexual. @naoeserexigente desde 2019.">
+<meta name="author" content="@naoeserexigente">
+<meta name="keywords" content="demissexual, demissexualidade, assexual, espectro ace, comunidade demi, @naoeserexigente">
+<meta name="color-scheme" content="dark light">
+<!-- Open Graph / Social -->
+<meta property="og:title" content="demissexual não é ser exigente · @naoeserexigente">
+<meta property="og:description" content="Primeiro vínculo. Depois desejo. Conscientização e acolhimento para pessoas demissexuais.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://naoeserexigente.github.io">
+<meta property="og:image" content="https://naoeserexigente.github.io/assets/og-demi.png">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="demissexual não é ser exigente">
+<meta name="twitter:description" content="Comunidade demi desde 2019. Primeiro vínculo, depois desejo.">
+<!-- PWA / GitHub Pages -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236b3fa0'/%3E%3Ctext x='50' y='68' font-size='48' text-anchor='middle' fill='white' font-family='monospace'%3E⚡%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="https://naoeserexigente.github.io/assets/icon-192.png">
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Google Fonts 2026 -- variable fonts + performance -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  /* RESET & VARIABLES 2026 */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg-dark: #0a0a0a;
+    --surface-dark: #141414;
+    --card-dark: #1c1c1c;
+    --border-dark: #2a2a2a;
+    --text-dark: #ededed;
+    --text-muted-dark: #a0a0a0;
+    --bg-light: #faf8f5;
+    --surface-light: #ffffff;
+    --card-light: #ffffff;
+    --border-light: #e2e0dc;
+    --text-light: #1a1a1a;
+    --text-muted-light: #5a5a5a;
+    --purple: #8b5cf6;
+    --purple-dark: #6d28d9;
+    --purple-glow: rgba(139, 92, 246, 0.2);
+    --amber: #f59e0b;
+    --coral: #ef4444;
+    --gray-demi: #6b7280;
+    --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    transition: background 0.3s, color 0.2s;
+    scroll-behavior: smooth;
+  }
+  body.dark {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+  }
+  body.light {
+    background: var(--bg-light);
+    color: var(--text-light);
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  /* theme toggle */
+  .theme-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--purple);
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 100;
+    transition: transform 0.2s;
+  }
+  .theme-toggle:hover { transform: scale(1.05); }
+  /* header */
+  .hero {
+    padding: 80px 0 48px;
+    text-align: center;
+    border-bottom: 1px solid;
+  }
+  body.dark .hero { border-color: var(--border-dark); }
+  body.light .hero { border-color: var(--border-light); }
+  .badge {
+    display: inline-block;
+    background: var(--purple);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .handle {
+    font-size: 1rem;
+    color: var(--purple);
+    font-weight: 500;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  .tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    opacity: 0.8;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  /* cards */
+  .card {
+    background: transparent;
+    border-radius: 28px;
+    padding: 32px;
+    margin: 32px 0;
+    transition: var(--transition);
+  }
+  body.dark .card { background: var(--card-dark); border: 1px solid var(--border-dark); }
+  body.light .card { background: var(--card-light); border: 1px solid var(--border-light); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+  h2 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .definition-box {
+    background: var(--purple-glow);
+    border-left: 4px solid var(--purple);
+    padding: 24px;
+    border-radius: 20px;
+    margin: 24px 0;
+  }
+  .definition-box p { margin-bottom: 12px; }
+  .highlight {
+    font-weight: 600;
+    color: var(--purple);
+  }
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .comp-item {
+    padding: 20px;
+    border-radius: 20px;
+  }
+  body.dark .comp-item { background: #0f0f0f; border: 1px solid #2a2a2a; }
+  body.light .comp-item { background: #f0ede8; border: 1px solid #e2e0dc; }
+  .comp-item h3 { font-size: 1.1rem; margin-bottom: 8px; }
+  .stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: space-between;
+    margin: 32px 0;
+  }
+  .stat {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--purple);
+  }
+  .ai-chat {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    z-index: 99;
+  }
+  .ai-button {
+    background: var(--purple);
+    border: none;
+    width: 52px;
+    height: 52px;
+    border-radius: 999px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+  }
+  .ai-button:hover { transform: scale(1.08); }
+  .chat-window {
+    position: fixed;
+    bottom: 100px;
+    right: 24px;
+    width: 320px;
+    background: var(--card-dark);
+    border-radius: 24px;
+    padding: 16px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border: 1px solid var(--border-dark);
+    z-index: 1000;
+  }
+  body.light .chat-window { background: white; border-color: #e2e0dc; }
+  .chat-window.open { display: flex; }
+  .chat-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .chat-input {
+    display: flex;
+    gap: 8px;
+  }
+  .chat-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid var(--border-dark);
+    background: transparent;
+    color: inherit;
+  }
+  .chat-input button {
+    background: var(--purple);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 48px 0 32px;
+  }
+  .social-icon {
+    padding: 10px 18px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.2s;
+  }
+  body.dark .social-icon { background: #1f1f1f; color: #ccc; }
+  body.light .social-icon { background: #e8e5e0; color: #333; }
+  .social-icon:hover { background: var(--purple); color: white; }
+  .phase-badge {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--purple);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    margin-left: 8px;
+  }
+  button, .btn-like {
+    cursor: pointer;
+  }
+  @media (max-width: 640px) {
+    .container { padding: 0 20px; }
+    .card { padding: 24px; }
+    .comparison-grid { grid-template-columns: 1fr; }
+  }
+  .quote {
+    font-style: italic;
+    border-left: 3px solid var(--purple);
+    padding-left: 20px;
+    margin: 24px 0;
+  }
+  footer {
+    text-align: center;
+    padding: 40px 0;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    border-top: 1px solid;
+  }
+  body.dark footer { border-color: var(--border-dark); }
+  body.light footer { border-color: var(--border-light); }
+  .pulse {
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 var(--purple-glow); }
+    70% { box-shadow: 0 0 0 12px rgba(139,92,246,0); }
+    100% { box-shadow: 0 0 0 0 rgba(139,92,246,0); }
+  }
+</style>
+</head>
+<body class="dark">
+<button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">🌓</button>
+
+<div class="ai-chat">
+  <button class="ai-button pulse" id="aiChatBtn" aria-label="Assistente demi IA">🤖</button>
+  <div class="chat-window" id="chatWindow">
+    <div class="chat-messages" id="chatMessages">
+      <div class="bot-msg">✨ Olá! Sou assistente demi. Pergunte sobre demissexualidade, comunidade ou o projeto @naoeserexigente.</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="chatInput" placeholder="Digite sua pergunta...">
+      <button id="chatSend">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<main>
+  <div class="container">
+    <div class="hero">
+      <span class="badge">desde 2019 · reativado 2026</span>
+      <h1>demissexual<br><span style="color: var(--purple);">não é ser exigente</span></h1>
+      <div class="handle">@naoeserexigente</div>
+      <p class="tagline">primeiro vínculo · depois desejo</p>
+    </div>
+
+    <!-- DEFINIÇÃO CENTRAL -->
+    <div class="card">
+      <h2>⚡ O que é demissexualidade</h2>
+      <div class="definition-box">
+        <p><strong class="highlight">Demissexual</strong> é quem <strong class="highlight">não sente atração sexual</strong> por alguém sem um <strong class="highlight">vínculo emocional significativo</strong>.</p>
+        <p>Não é escolha. Não é “ser exigente”. Não é trauma. É uma <strong>orientação sexual no espectro assexual</strong> — a atração <strong>não existe</strong> até que a conexão se forme.</p>
+        <p>Mesmo que a pessoa seja bonita, mesmo que você queira: <strong>o gatilho não está ali</strong>. Apenas o vínculo ativa a possibilidade da atração sexual.</p>
+      </div>
+      
+      <div class="comparison-grid">
+        <div class="comp-item">
+          <h3>🧠 Demissexual (orientação)</h3>
+          <p>Atração sexual <strong>condicionada</strong> ao vínculo emocional. Sem vínculo → sem atração. Baixo controle sobre o gatilho.</p>
+        </div>
+        <div class="comp-item">
+          <h3>📋 “Ser exigente” (julgamento)</h3>
+          <p>Escolha <strong>deliberada</strong> baseada em critérios. Alto controle. A atração pode existir, mas é filtrada.</p>
+        </div>
+      </div>
+      <p style="font-size:0.9rem; opacity:0.7;">“Uma pessoa demissexual é como uma câmera que só dispara quando um sensor específico é ativado — não a beleza da paisagem, mas a presença de conexão.”</p>
+    </div>
+
+    <!-- DADOS E PESQUISA -->
+    <div class="card">
+      <h2>📊 Dados & realidade</h2>
+      <div class="stats-row">
+        <div class="stat"><div class="stat-number">~1%</div><div>no espectro assexual</div></div>
+        <div class="stat"><div class="stat-number">65%</div><div>relatam estresse minoritário</div></div>
+        <div class="stat"><div class="stat-number">32%</div><div>ideação suicida (Chan & Leung, 2023)</div></div>
+      </div>
+      <p>Estudos populacionais indicam que cerca de 1% da população se identifica dentro do espectro assexual (Nessling et al., 2025; Xu et al., 2023). O sofrimento não vem da ausência de atração — vem da <strong>invalidação social</strong>, da pressão para performar e da patologização constante.</p>
+    </div>
+
+    <!-- RELATO FUNDADOR -->
+    <div class="card">
+      <h2>📖 “Estar no meio de uma multidão”</h2>
+      <div class="quote">
+        “Estar no meio de uma multidão enquanto todos sentem atração sexual. Exceto você.”
+      </div>
+      <p>— Relato original de 2019, blog Orquídeas Comestíveis.</p>
+      <p style="margin-top:16px;"><strong>Silêncio masculino:</strong> silêncio não é ausência. É limite. Mas limites são frequentemente interpretados como falha.<br>
+      <strong>Casulo:</strong> o casulo não é retirada patológica. É reorganização interna. Transformação silenciosa.</p>
+    </div>
+
+    <!-- DESFAZENDO MAL-ENTENDIDOS (crítica feminista radical) -->
+    <div class="card">
+      <h2>🧩 “Mas isso não é só ser humano normal?”</h2>
+      <p>Uma crítica comum — inclusive de setores feministas — diz que “preferir conexão antes do sexo é saudável, não uma orientação”. <strong>Mas a demissexualidade não é sobre preferência.</strong></p>
+      <p>Pessoas alossexuais (a maioria) <strong>sentem atração</strong> mesmo quando escolhem esperar. O demissexual <strong>não sente</strong> até o vínculo existir. A diferença é qualitativa, não comportamental.</p>
+      <div class="definition-box" style="margin-top:16px;">
+        <p>✅ Se demissexualidade fosse “apenas ser humano normal”, não haveria 65% de estresse minoritário, nem pessoas forçadas a situações sexuais que geram angústia.<br>
+        ✅ A dor é real. A invalidação é real. A comunidade existe porque a “normalidade” não nos inclui.</p>
+      </div>
+    </div>
+
+    <!-- NA MÍDIA / REFERÊNCIAS -->
+    <div class="card">
+      <h2>📰 Demissexual na mídia & comunidade</h2>
+      <ul style="margin-left: 24px; margin-top: 12px;">
+        <li>📄 <strong>iG Queer (2022):</strong> “Demissexual é ser bissexual? Psicólogos explicam” — com relatos de Estefane, Alison, Carolline.</li>
+        <li>📝 <strong>Ana Cláudia Leite (Medium, 2018):</strong> “Não, você não entendeu o que é Demissexual” — diferencia atração de libido, desmonta patologização.</li>
+        <li>🎙 <strong>Spotify:</strong> episódio “Demissexual não é ser exigente” — sobre espectro assexual, grey, demi.</li>
+        <li>📘 <strong>PDF acadêmico 2025-26:</strong> “Mais Que um Critério: A Demissexualidade como Experiência Relacional Inerente” — análise conceitual e comparação entre orientação e exigência.</li>
+      </ul>
+    </div>
+
+    <!-- O PROJETO: FASES GITHUB -->
+    <div class="card">
+      <h2>🚀 Fases do projeto · GitHub 2026</h2>
+      <p>Este é o <strong>index.html da Fase 1</strong> — manifesto e hub da comunidade <strong>@naoeserexigente</strong>.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0;">
+        <div style="flex:1; min-width:200px;"><span style="font-weight:700;">✅ Fase 1 (atual)</span><br>Manifesto, definição, dados, rede social, IA assistente.</div>
+        <div style="flex:1; min-width:200px;"><span style="font-weight:700;">🛒 Fase 2</span><br>Loja física (produtos com significado, personagens autorais ou domínio público com transparência).</div>
+        <div style="flex:1; min-width:200px;"><span style="font-weight:700;">🎙 Fase 3</span><br>App TinderDemi — matching por voz, acessível para cegos, respeitando o tempo demi.</div>
+      </div>
+      <p>📁 <strong>GitHub:</strong> <a href="#" id="githubLink" style="color: var(--purple);">github.com/naoeserexigente/demissexual</a> (em breve repositório público)</p>
+    </div>
+
+    <!-- COMUNIDADE E REDES -->
+    <div class="footer-links">
+      <a href="#" class="social-icon" id="fbLink">📘 Facebook</a>
+      <a href="#" class="social-icon" id="igLink">📸 Instagram</a>
+      <a href="#" class="social-icon" id="waLink">💬 WhatsApp</a>
+      <a href="#" class="social-icon" id="tgLink">✈️ Telegram</a>
+      <a href="#" class="social-icon" id="spLink">🎧 Spotify</a>
+    </div>
+
+    <footer>
+      <p>🏳️‍🌈 demissexual não é ser exigente · @naoeserexigente · desde 2019, reativado 2026</p>
+      <p style="margin-top:12px;">conteúdo sob licença livre comunitária · WCAG acessível · PWA ready</p>
+      <p style="margin-top:8px; font-size:0.75rem;">📡 versão 2026 — inteligência artificial integrada (simulador local com respostas educativas)</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+  // TEMA
+  const themeToggle = document.getElementById('themeToggle');
+  const body = document.body;
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') body.classList.replace('dark', 'light');
+  else if (savedTheme === 'dark') body.classList.replace('light', 'dark');
+  else if (window.matchMedia('(prefers-color-scheme: light)').matches && !savedTheme) body.classList.replace('dark', 'light');
+  
+  themeToggle.addEventListener('click', () => {
+    const isDark = body.classList.contains('dark');
+    if (isDark) {
+      body.classList.replace('dark', 'light');
+      localStorage.setItem('theme', 'light');
+    } else {
+      body.classList.replace('light', 'dark');
+      localStorage.setItem('theme', 'dark');
+    }
+  });
+
+  // IA CHAT (simulador inteligente com respostas contextuais)
+  const chatBtn = document.getElementById('aiChatBtn');
+  const chatWindow = document.getElementById('chatWindow');
+  const chatMessages = document.getElementById('chatMessages');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+
+  function addMessage(sender, text, isUser = false) {
+    const msgDiv = document.createElement('div');
+    msgDiv.style.marginBottom = '8px';
+    msgDiv.style.padding = '8px 12px';
+    msgDiv.style.borderRadius = '16px';
+    msgDiv.style.maxWidth = '90%';
+    msgDiv.style.wordBreak = 'break-word';
+    if (isUser) {
+      msgDiv.style.backgroundColor = 'var(--purple)';
+      msgDiv.style.color = 'white';
+      msgDiv.style.alignSelf = 'flex-end';
+      msgDiv.style.marginLeft = 'auto';
+      msgDiv.style.borderRadius = '16px 16px 4px 16px';
+    } else {
+      msgDiv.style.backgroundColor = 'var(--card-dark)';
+      msgDiv.style.border = '1px solid var(--border-dark)';
+      msgDiv.style.alignSelf = 'flex-start';
+      msgDiv.style.borderRadius = '16px 16px 16px 4px';
+    }
+    if (body.classList.contains('light') && !isUser) msgDiv.style.backgroundColor = '#f0ede8';
+    msgDiv.textContent = text;
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function getAIResponse(question) {
+    const q = question.toLowerCase();
+    if (q.includes('demissexual') || q.includes('o que é demi')) {
+      return "Demissexual é uma orientação no espectro assexual: a pessoa só sente atração sexual após criar um vínculo emocional profundo. Não é escolha, não é 'exigência' — é uma característica inerente da atração.";
+    }
+    if (q.includes('exigente') || q.includes('frescura')) {
+      return "Ser chamado de 'exigente' é um dos maiores mal-entendidos. Não é sobre ter critérios altos, é sobre não sentir atração alguma até que exista conexão. É como uma câmera que só dispara com luz: não é sobre a paisagem ser bonita ou feia.";
+    }
+    if (q.includes('tinder') || q.includes('app') || q.includes('dating')) {
+      return "O TinderDemi (Fase 3 do projeto) é um app de matching por voz, acessível para cegos, onde a primeira interação é ouvir a apresentação da pessoa — sem fotos, sem swipe visual. Respeita o tempo demi e a acessibilidade.";
+    }
+    if (q.includes('comunidade') || q.includes('@naoeserexigente')) {
+      return "@naoeserexigente é uma página/comunidade ativa desde 2019 no Facebook, Instagram, WhatsApp, Telegram e Spotify. Acolhimento, conscientização e luta contra a patologização da demissexualidade.";
+    }
+    if (q.include
