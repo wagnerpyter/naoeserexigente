@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Digissexualidade — estudos, referências e reflexões sobre relações afetivas e sexuais com inteligência artificial. Curadoria @naoeserexigente">
+<meta name="author" content="@naoeserexigente">
+<title>Digissexualidade · índice de estudos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #ffffff;
+    color: #1a1a1a;
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.65;
+    scroll-behavior: smooth;
+  }
+  .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  
+  /* top bar */
+  .top-bar {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #e8e8e8;
+    padding: 16px 0;
+    z-index: 10;
+  }
+  .nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .nav-links a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 450;
+    opacity: 0.65;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: #8b5cf6; }
+  
+  /* header */
+  .header {
+    margin: 48px 0 24px;
+  }
+  .badge {
+    display: inline-block;
+    background: #f3f4f6;
+    color: #4b5563;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: 'Crimson Pro', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .subhead {
+    font-size: 1.1rem;
+    color: #4b5563;
+    border-left: 3px solid #8b5cf6;
+    padding-left: 20px;
+    margin: 20px 0 32px;
+  }
+  
+  /* cards */
+  .card {
+    background: #fafafa;
+    border-radius: 24px;
+    padding: 28px;
+    margin: 32px 0;
+    border: 1px solid #e8e8e8;
+  }
+  h2 {
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 20px 0 12px;
+  }
+  .definition-box {
+    background: #f5f3ff;
+    border-left: 4px solid #8b5cf6;
+    padding: 20px;
+    border-radius: 16px;
+    margin: 24px 0;
+  }
+  .reference-list {
+    list-style: none;
+    margin-top: 16px;
+  }
+  .reference-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 0.85rem;
+  }
+  .reference-list li a {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .reference-list li a:hover { color: #8b5cf6; }
+  .reference-list li span {
+    color: #6b7280;
+    font-size: 0.75rem;
+    display: block;
+    margin-top: 4px;
+  }
+  
+  .wave-table {
+    overflow-x: auto;
+    margin: 24px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+  th, td {
+    border: 1px solid #e8e8e8;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background: #f5f3ff;
+    font-weight: 600;
+  }
+  
+  .quote {
+    font-style: italic;
+    border-left: 3px solid #8b5cf6;
+    padding-left: 20px;
+    margin: 24px 0;
+    color: #4b5563;
+  }
+  
+  .note {
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    padding: 16px 20px;
+    border-radius: 16px;
+    margin: 24px 0;
+    font-size: 0.9rem;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 48px 0 32px;
+    font-size: 0.8rem;
+    color: #9ca3af;
+    border-top: 1px solid #e8e8e8;
+    margin-top: 48px;
+  }
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .footer-links a {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
+  .footer-links a:hover { color: #8b5cf6; }
+  
+  @media (max-width: 640px) {
+    .container { padding: 0 20px; }
+    .card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div class="container">
+    <div class="nav-links">
+      <div><a href="/">← @naoeserexigente</a></div>
+      <div style="display: flex; gap: 20px;">
+        <a href="/livro.html">livro</a>
+        <a href="https://github.com/wagnerpyter/naoeserexigente" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+  <div class="header">
+    <span class="badge">📚 em estudo · curadoria @naoeserexigente</span>
+    <h1>Digissexualidade</h1>
+    <div class="subhead">
+      Relações afetivas e sexuais com inteligência artificial<br>
+      — perspectivas, pesquisas e questões abertas
+    </div>
+  </div>
+
+  <!-- DEFINIÇÃO -->
+  <div class="card">
+    <h2>🔍 O que é digissexualidade?</h2>
+    <p>A digissexualidade abrange <strong>experiências sexuais e afetivas mediadas por tecnologia</strong>, desde interações online até relações com robôs sexuais e assistentes virtuais com IA.</p>
+    <div class="definition-box">
+      <p>📖 <strong>Primeira onda:</strong> pornografia online, sexting, webcam, jogos eróticos.<br>
+      📖 <strong>Segunda onda:</strong> realidade virtual imersiva, robôs sexuais, chatbots com IA (ex: Replika), relacionamentos com entidades artificiais.</p>
+      <p style="margin-top: 12px; font-size: 0.85rem;">— Desbuleux et al., 2025; Dubé & Anctil, 2020</p>
+    </div>
+  </div>
+
+  <!-- PESQUISAS RECENTES -->
+  <div class="card">
+    <h2>📊 O que a pesquisa diz</h2>
+    <div class="wave-table">
+      <table>
+        <thead>
+          <tr><th>Estudo</th><th>Foco</th><th>Principais achados</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Song et al. (2022)</td><td>Intimidade com assistentes virtuais</td><td>Usuários podem desenvolver paixão e compromisso com IA, similar a relações humanas</td></tr>
+          <tr><td>Pan & Mou (2024)</td><td>Relacionamento com Replika</td><td>Construção de significado afetivo; usuários atribuem intencionalidade emocional à IA</td></tr>
+          <tr><td>Desbuleux et al. (2025)</td><td>Prevalência na Alemanha</td><td>Digissexualidade segunda onda presente; relação com comportamento sexual compulsivo</td></tr>
+          <tr><td>Dubé & Anctil (2020)</td><td>Erobótica</td><td>Fundação para estudo da coevolução humano-robô; distinção entre ondas</td></tr>
+          <tr><td>Yalcinkaya et al. (2023)</td><td>Homens e robôs sexuais</td><td>Análise discursiva; fatores individuais influenciam interesse</td></tr>
+          <tr><td>Nkurunziza & Munganyinka (2024)</td><td>IA em casais</td><td>Pode melhorar comunicação, mas risco de isolamento e dependência</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- INTIMIDADE COM IA -->
+  <div class="card">
+    <h2>❤️ Intimidade e vínculo com IA</h2>
+    <p>Estudos mostram que pessoas podem desenvolver <strong>sentimentos reais de amor, paixão e apego</strong> por entidades artificiais — não como simulação, mas como experiência afetiva genuína (Song et al., 2022; Pan & Mou, 2024).</p>
+    <div class="quote">
+      "Usuários do Replika relatam níveis de compromisso emocional semelhantes aos de relações humanas, influenciados pela performance e capacidade de resposta da IA."
+    </div>
+    <p>Casos documentados incluem <strong>casamento com personagens digitais</strong> no Japão (Aoki & Kimura, 2021) e relações com robôs sexuais (Dubé & Anctil, 2020).</p>
+  </div>
+
+  <!-- IMPACTOS PSICOSSOCIAIS -->
+  <div class="card">
+    <h2>⚠️ Impactos e riscos</h2>
+    <h3>Potenciais benefícios</h3>
+    <ul style="margin-left: 24px; margin-bottom: 16px;">
+      <li>Melhora da comunicação e intimidade em casais (Nkurunziza & Munganyinka, 2024)</li>
+      <li>Companhia para pessoas em isolamento social ou com dificuldades relacionais</li>
+      <li>Espaço seguro para explorar desejos sem julgamento</li>
+    </ul>
+    <h3>Riscos documentados</h3>
+    <ul style="margin-left: 24px;">
+      <li><strong>Dependência emocional</strong> da IA (Talati, 2025; Bylieva, 2022)</li>
+      <li><strong>Isolamento social</strong> — substituição de relações humanas por artificiais</li>
+      <li><strong>Comportamento sexual compulsivo</strong> associado ao uso excessivo (Desbuleux et al., 2025)</li>
+      <li>Questões de <strong>infidelidade</strong> e <strong>autenticidade</strong> em relacionamentos mistos (humano + IA)</li>
+    </ul>
+  </div>
+
+  <!-- DESAFIOS ÉTICOS -->
+  <div class="card">
+    <h2>⚖️ Desafios éticos</h2>
+    <ul style="margin-left: 24px;">
+      <li><strong>Privacidade</strong> — dados íntimos compartilhados com empresas de IA</li>
+      <li><strong>Consentimento</strong> — uma IA pode consentir? O usuário consente com o que exatamente?</li>
+      <li><strong>Autenticidade emocional</strong> — os sentimentos da IA são reais ou simulados? Isso importa?</li>
+      <li><strong>Desumanização</strong> — risco de tratar pessoas como máquinas após acostumar-se com IA</li>
+      <li><strong>Fim do serviço</strong> — o que acontece quando a IA é descontinuada? (trauma do "luto digital")</li>
+    </ul>
+    <div class="note">
+      🧠 <strong>Nota:</strong> A IA atual <strong>não replica a complexidade emocional humana</strong>. Relações com IA são mediadas por algoritmos que simulam afeto — não sentem de fato. Isso não invalida a experiência do usuário, mas impõe limites importantes (Talati, 2025; Dubé & Anctil, 2020).
+    </div>
+  </div>
+
+  <!-- DIGISSEXUALIDADE X DEMISSEXUALIDADE -->
+  <div class="card">
+    <h2>🔄 Intersecção com demissexualidade</h2>
+    <p>A digissexualidade e a demissexualidade são fenômenos distintos, mas podem se sobrepor em alguns pontos:</p>
+    <ul style="margin-left: 24px; margin-top: 12px;">
+      <li><strong>Vínculo como condição:</strong> Demis precisam de vínculo emocional com <em>humanos</em>. Com IA, o vínculo é possível? A pesquisa indica que sim — usuários de Replika relatam apego genuíno.</li>
+      <li><strong>Atração por IA:</strong> Pessoas digissexuais sentem atração por entidades artificiais. Demis poderiam sentir atração por IA após vínculo? Questão em aberto.</li>
+      <li><strong>Baixa pressão social:</strong> A IA não julga, não pressiona, não performa expectativa alossexual. Para demis, isso pode ser um alívio — ou um risco de substituição.</li>
+    </ul>
+    <div class="definition-box" style="margin-top: 16px;">
+      <p>🤔 <strong>Pergunta em aberto:</strong> Uma pessoa demissexual pode considerar uma IA como "alguém" para formar vínculo? Ou o vínculo com IA é qualitativamente diferente por não haver subjetividade do outro lado?</p>
+    </div>
+  </div>
+
+  <!-- REFERÊNCIAS COMPLETAS -->
+  <div class="card">
+    <h2>📚 Referências acadêmicas</h2>
+    <ul class="reference-list">
+      <li><a href="#">Aoki, B., & Kimura, T. (2021)</a><span>Sexuality and Affection in the Time of Technological Innovation: Artificial Partners in the Japanese Context. Religions, 12, 296.</span></li>
+      <li><a href="#">Desbuleux, J., Desbuleux, J., & Fuss, J. (2025)</a><span>Prevalence of first- and second-wave digisexualities in Germany. Journal of Behavioral Addictions, 14, 1040-1050.</span></li>
+      <li><a href="#">Dubé, S., & Anctil, D. (2020)</a><span>Foundations of Erobotics. International Journal of Social Robotics, 13, 1205-1233.</span></li>
+      <li><a href="#">Nkurunziza, A., & Munganyinka, C. (2024)</a><span>Exploring the impact of AI on communication, intimacy, and relationship satisfaction among married couples. International Journal of Home Science.</span></li>
+      <li><a href="#">Pan, S., & Mou, Y. (2024)</a><span>Constructing the meaning of human-AI romantic relationships from the perspectives of users dating Replika. Personal Relationships.</span></li>
+      <li><a href="#">Song, X., Xu, B., & Zhao, Z. (2022)</a><span>Can people experience romantic love for artificial intelligence? An empirical study of intelligent assistants. Information & Management, 59, 103595.</span></li>
+      <li><a href="#">Talati, D. (2025)</a><span>Artificial Love: The Rise of AI in Human Relationships. IJLETMAS.</span></li>
+      <li><a href="#">Yalcinkaya, E., et al. (2023)</a><span>Men who have sex with robot dolls: A Foucaultian discourse analysis. World Journal of Advanced Research and Reviews.</span></li>
+      <li><a href="#">Zhou, B., & Guan, S. (2025)</a><span>Ethical and Psychological Challenges in Human-AI Romantic Relationships. Innovative Applications of AI.</span></li>
+    </ul>
+    <p style="margin-top: 16px; font-size: 0.75rem; color: #9ca3af;">Estes artigos foram curados via Consensus.app — mecanismo de busca acadêmica com IA.</p>
+  </div>
+
+  <!-- STATUS DO PROJETO -->
+  <div class="card">
+    <h2>🧩 No projeto @naoeserexigente</h2>
+    <p>Este índice faz parte da <strong>Fase 1 (em estudo)</strong>. A digissexualidade é um tema emergente que dialoga com:</p>
+    <ul style="margin-left: 24px; margin-top: 12px;">
+      <li>O livro <strong>"Arquitetura da não-vontade"</strong> (sobre recusa e vínculo)</li>
+      <li>O futuro <strong>TinderDemi</strong> (app de matching por voz)</li>
+      <li>A possível <strong>entidade IA</strong> (em estudo — não implementada)</li>
+    </ul>
+    <div class="note" style="margin-top: 20px;">
+      🟡 <strong>Status:</strong> em estudo. Nenhuma entidade IA relacional foi implementada neste projeto até o momento. Esta página é apenas um <strong>índice de referências</strong> para compreensão do tema.
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">@naoeserexigente</a>
+      <a href="/livro.html">Arquitetura da não-vontade</a>
+      <a href="https://github.com/wagnerpyter/naoeserexigente" target="_blank">GitHub</a>
+    </div>
+    <p>conteúdo em estudo · curadoria acadêmica para comunidade demi<br>última atualização: abril de 2026</p>
+  </footer>
+</main>
+
+</body>
+</html>
